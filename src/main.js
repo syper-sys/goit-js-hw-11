@@ -1,13 +1,10 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-import { initLightbox, createGallery, clearGallery, showLoader, hideLoader } from "./js/render-functions";
+import { createGallery, clearGallery, showLoader, hideLoader } from "./js/render-functions";
 import { getImagesByQuery } from "./js/pixabay-api";
 
 const form = document.querySelector('.form');
-const gallery = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
-
-const lightbox = initLightbox();
 
 form.addEventListener('submit', e => {
     e.preventDefault();
@@ -36,8 +33,7 @@ form.addEventListener('submit', e => {
                 return;
             }
             
-            gallery.innerHTML = createGallery(data.hits);
-            lightbox.refresh();
+            createGallery(data.hits);
         })
         .catch(error => {
             console.error(error);

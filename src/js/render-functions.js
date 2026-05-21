@@ -25,22 +25,34 @@ export function imagesTemplate(arr) {
     return arr.map(imageTemplate).join('');
 }
 
-export function initLightbox() {
-    lightboxInstance = new SimpleLightbox('.gallery-link', { 
-        captionsData: 'alt',
-        captionDelay: 250,
-    });
+function initLightbox() {
+    if (!lightboxInstance) {
+        lightboxInstance = new SimpleLightbox('.gallery-link', {
+            captionsData: 'alt',
+            captionDelay: 250,
+        });
+    }
     return lightboxInstance;
 }
 
 export function createGallery(images) {
-    return imagesTemplate(images);
+    const gallery = document.querySelector('.gallery');
+    if (!gallery) {
+        return;
+    }
+
+    gallery.innerHTML = imagesTemplate(images);
+    const lightbox = initLightbox();
+    lightbox.refresh();
 }
 
 export function clearGallery() {
     const gallery = document.querySelector('.gallery');
     if (gallery) {
         gallery.innerHTML = '';
+    }
+    if (lightboxInstance) {
+        lightboxInstance.refresh();
     }
 }
 
