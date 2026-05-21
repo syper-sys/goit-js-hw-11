@@ -16,12 +16,23 @@
   -webkit-text-size-adjust: 100%;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 body {
   display: flex;
   flex-direction: column;
   min-width: 100vw;
   min-height: 100vh;
+  padding: 16px;
   margin: 0;
+}
+
+.is-hidden {
+  display: none;
 }
 
 main {
