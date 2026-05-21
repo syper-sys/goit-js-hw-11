@@ -1,4 +1,5 @@
 .section{
+    padding: 0 152px;
     display: flex;
     flex-direction: column;
     justify-content: center;
